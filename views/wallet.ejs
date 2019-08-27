@@ -1,0 +1,42 @@
+<% layout('layout/layout')%>
+<div class="container">
+   <h1>Wallet</h1>
+</div>
+<br>
+
+<div class="container">
+   <h3>Address</h3>
+   <%=address %>
+</div>
+<hr />
+<div class="container">
+   <h3>Balance</h3>
+   <%=balance %>
+</div>
+
+<hr />
+<div class="container">
+   <h3>Transaction List </h3>
+   <table class="table table-hover table-striped">
+      <thead>
+         <tr>
+            <th>#</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Amount</th>
+            <th>Valid?</th>
+         </tr>
+      </thead>
+      <tbody>
+         <% txs.forEach( function (el, idx) { %>
+         <tr>
+            <td><%=idx%></td>
+            <td class="text-truncate" style="max-width: 150px;"><a href='/eth/wallet/<%=el.fromAddress%>'><%=el.fromAddress%></td>
+            <td class="text-truncate" style="max-width: 150px;"><a href='/eth/wallet/<%=el.toAddress%>'><%=el.toAddress%></td>
+            <td><%=el.amount%></td>
+            <td><span>✓</span></td>
+         </tr>
+         <% }) %>
+      </tbody>
+   </table>
+</div>
